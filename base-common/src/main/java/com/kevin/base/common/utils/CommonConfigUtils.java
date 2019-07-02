@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @Author: kevin
  * @Date: 2019/7/2 10:12
  */
-public class CommonConfigUtils {
+public final class CommonConfigUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CommonConfigUtils.class);
 
