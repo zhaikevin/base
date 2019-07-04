@@ -1,9 +1,13 @@
 package com.kevin.base.zookeeper.lock;
 
 import com.kevin.base.common.utils.ThreadUtils;
+import com.kevin.base.zookeeper.utils.ZkUtils;
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 /**
  * @Description: 基于zookeeper的可以自动释放的分布式锁测试类
@@ -13,6 +17,15 @@ import org.slf4j.LoggerFactory;
 public class AutoReleaseDistLockTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AutoReleaseDistLockTest.class);
+
+    @Before
+    public void prepare() throws Exception {
+
+        List<String> children = ZkUtils.getClient().getChildren().forPath("/");
+        for (String child : children) {
+            ZkUtils.getClient().delete().deletingChildrenIfNeeded().forPath("/" + child);
+        }
+    }
 
     @Test
     public void testLock() throws InterruptedException {
