@@ -13,6 +13,8 @@
     <modules>
         <module>base-common</module>
         <module>base-zookeeper</module>
+        <module>base-elasticsearch</module>
+        <module>base-redis</module>
     </modules>
 
     <properties>
